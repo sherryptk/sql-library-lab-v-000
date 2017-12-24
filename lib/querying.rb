@@ -21,14 +21,24 @@ end
 
 def select_name_and_series_subgenres_of_authors
   "SELECT Authors.name, Subgenres.name
-  FROM Authors
-  LEFT JOIN Subgenres;"
+  FROM Series
+  JOIN Authors ON author_id = authors.id
+  JOIN Subgenres ON subgenre_id = subgenres.id;"
 end
 
 def select_series_title_with_most_human_characters
-  "Write your SQL query here"
+  "SELECT Series.title
+  FROM Series
+  JOIN Characters on series.id = series_id
+  GROUP BY species
+  ORDER BY COUNT(species) LIMIT 1;"
 end
 
 def select_character_names_and_number_of_books_they_are_in
-  "Write your SQL query here"
+  "SELECT Characters.name, COUNT(Books.title)
+  FROM Character_books
+  JOIN Books ON Books.id = Character_books.book_id
+  JOIN Characters ON Characters.id = Character_books.character_id
+  GROUP BY Characters.name
+  ORDER BY COUNT(Books.title) DESC;"
 end
