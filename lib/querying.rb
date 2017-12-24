@@ -23,10 +23,11 @@ def select_name_and_series_subgenres_of_authors
   # "SELECT Authors.name, Subgenres.name
   # FROM Authors
   # JOIN Subgenres;"
-  "SELECT Authors.name
-  FROM Authors
-  JOIN Series
-  WHERE author_id = authors.id & subgenre_id = subgenres.id;"
+  "SELECT Authors.name, Subgenres.name
+  FROM Series
+  JOIN Authors
+  JOIN Subgenres
+  WHERE (author_id = authors.id, subgenre_id = subgenres.id);"
 end
 
 def select_series_title_with_most_human_characters
