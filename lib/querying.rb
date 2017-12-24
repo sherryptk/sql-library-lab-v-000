@@ -26,7 +26,7 @@ def select_name_and_series_subgenres_of_authors
   "SELECT Authors.name, Subgenres.name
   FROM Series
   JOIN Authors, Subgenres
-  WHERE author_id = authors.id
+  WHERE author_id = authors.id,
   WHERE series_id = series.id;"
 end
 
